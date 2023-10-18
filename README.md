@@ -1,5 +1,5 @@
 # :school_satchel: mock-plugin
-[![CI](https://github.com/go-semantic-release/mock-plugin/workflows/CI/badge.svg?branch=main)](https://github.com/go-semantic-release/mock-plugin/actions?query=workflow%3ACI+branch%3Amain)
+[![CI](https://github.com/go-semantic-release/mock-plugin/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/go-semantic-release/mock-plugin/actions?query=workflow%3ACI+branch%3Amain)
 [![Go Report Card](https://goreportcard.com/badge/github.com/go-semantic-release/mock-plugin)](https://goreportcard.com/report/github.com/go-semantic-release/mock-plugin)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/go-semantic-release/mock-plugin)](https://pkg.go.dev/github.com/go-semantic-release/mock-plugin)
 
