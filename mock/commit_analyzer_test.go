@@ -23,7 +23,8 @@ func TestAnalyze(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.RawMessage, func(t *testing.T) {
 			commit := analyzeCommit(&semrel.RawCommit{
-				RawMessage: tc.RawMessage,
+				RawMessage:  tc.RawMessage,
+				Annotations: map[string]string{},
 			})
 			require.Equal(t, tc.Type, commit.Type)
 			require.Equal(t, tc.Change.Patch, commit.Change.Patch)
