@@ -5,7 +5,7 @@ import "github.com/go-semantic-release/semantic-release/v2/pkg/updater"
 var _ updater.FilesUpdater = &Mock{}
 
 func (m *Mock) ForFiles() string {
-	m.Log.Println("listing files to update")
+	m.Log.Println("allowing *.mock files")
 	return ".*\\.mock"
 }
 

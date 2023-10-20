@@ -16,6 +16,7 @@ func analyzeCommit(rawCommit *semrel.RawCommit) *semrel.Commit {
 		msg = splitMessages[0]
 		cType = ""
 	}
+	rawCommit.Annotations["mock"] = "true"
 	return &semrel.Commit{
 		SHA:         rawCommit.SHA,
 		Raw:         splitMessages,
