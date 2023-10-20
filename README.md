@@ -5,6 +5,13 @@
 
 This plugin mocks various semantic-release plugins for testing purposes.
 
+## Usage
+
+Replace any plugin with the mock plugin to test your semantic-release setup.
+```bash
+./semantic-release --provider github:go-semantic-release/mock-plugin
+```
+
 ## Licence
 
 The [MIT License (MIT)](http://opensource.org/licenses/MIT)
