@@ -22,14 +22,14 @@ func (m *Mock) GetCommits(fromSha, toSha string) ([]*semrel.RawCommit, error) {
 	return []*semrel.RawCommit{
 		{
 			SHA:        "1",
-			RawMessage: "feat",
+			RawMessage: "feat: add feature",
 			Annotations: map[string]string{
 				"author_name": "mock",
 			},
 		},
 		{
 			SHA:        "2",
-			RawMessage: "fix",
+			RawMessage: "fix: bug fix",
 			Annotations: map[string]string{
 				"author_name": "mock",
 			},

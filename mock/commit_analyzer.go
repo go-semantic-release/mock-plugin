@@ -9,22 +9,33 @@ import (
 
 var _ analyzer.CommitAnalyzer = &Mock{}
 
+func analyzeCommit(rawCommit *semrel.RawCommit) *semrel.Commit {
+	splitMessages := strings.Split(rawCommit.RawMessage, "\n")
+	cType, msg, foundType := strings.Cut(splitMessages[0], ":")
+	if !foundType {
+		msg = splitMessages[0]
+		cType = ""
+	}
+	return &semrel.Commit{
+		SHA:         rawCommit.SHA,
+		Raw:         splitMessages,
+		Annotations: rawCommit.Annotations,
+		Type:        cType,
+		Scope:       "mock",
+		Message:     msg,
+		Change: &semrel.Change{
+			Patch: cType == "fix",
+			Minor: cType == "feat",
+			Major: cType == "feat!",
+		},
+	}
+}
+
 func (m *Mock) Analyze(commits []*semrel.RawCommit) []*semrel.Commit {
 	m.Log.Printf("analyzing %d commits", len(commits))
 	analyzedCommits := make([]*semrel.Commit, len(commits))
 	for i, commit := range commits {
-		analyzedCommits[i] = &semrel.Commit{
-			SHA:     commit.SHA,
-			Raw:     strings.Split(commit.RawMessage, "\n"),
-			Type:    commit.RawMessage,
-			Scope:   "mock",
-			Message: commit.RawMessage,
-			Change: &semrel.Change{
-				Patch: commit.RawMessage == "fix",
-				Minor: commit.RawMessage == "feat",
-			},
-			Annotations: commit.Annotations,
-		}
+		analyzedCommits[i] = analyzeCommit(commit)
 	}
 	return analyzedCommits
 }
